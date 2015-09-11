@@ -3,5 +3,15 @@ exports.config = {
   specs: ['githubProfileFeature.js'],
   capabilities: {
     browserName: 'chrome'
-  }
+  },
+  mocks: {
+   default: [],
+   dir: 'mocks' // default value: 'mocks'
+ },
+ onPrepare: function(){
+   require('protractor-http-mock').config = {
+     rootDirectory: __dirname, // default value: process.cwd()
+     protractorConfig: 'conf.js' // default value: 'protractor.conf'
+   };
+ }
 }
